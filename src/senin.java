@@ -31,10 +31,10 @@ public class senin extends javax.swing.JFrame {
         tampil_jadwal();
         
     }
-    
+   
     public void tampil_jadwal(){
         
-       if(logindosen.idDosen == 3 ||informatika.dosenId == 3){
+       if(logindosen.idDosen == 3 ||informatika.dosenId == 3 ){
         try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 3");
@@ -58,7 +58,7 @@ public class senin extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen==2 || informatika.dosenId == 2){
+       }else if (logindosen.idDosen==2 || tpb.dosenid == 2){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 2");
@@ -70,7 +70,7 @@ public class senin extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen==4 || || informatika.dosenId == 4){
+       }else if (logindosen.idDosen==4 || informatika.dosenId == 4){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 4");
@@ -82,7 +82,7 @@ public class senin extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen==5 || || informatika.dosenId == 5){
+       }else if (logindosen.idDosen==5 || tpb.dosenid == 5){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 5");
@@ -112,12 +112,16 @@ public class senin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         jLabel1.setText("Senin");
 
+        jTable1.setBackground(new java.awt.Color(153, 255, 255));
+        jTable1.setBorder(new javax.swing.border.MatteBorder(null));
+        jTable1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -130,6 +134,13 @@ public class senin extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,25 +148,37 @@ public class senin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
+                        .addGap(45, 45, 45)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(58, 58, 58)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(jButton1)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Jadwal se = new Jadwal ();
+        se.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -193,6 +216,7 @@ public class senin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

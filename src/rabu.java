@@ -1,3 +1,11 @@
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,8 +21,91 @@ public class rabu extends javax.swing.JFrame {
     /**
      * Creates new form rabu
      */
+    Connection con = null;
+    public DefaultTableModel model;
+    
     public rabu() {
+       
+    
         initComponents();
+        con = config.getConnection();
+    
+    
+        
+        
+        String[] header1 = {"Mulai","Matkul","Selesai"};
+        model = new DefaultTableModel(header1,0);
+        jTable1.setModel(model);
+        
+        tampil_jadwal();
+        
+    }
+    
+    public void tampil_jadwal(){
+        
+       if(logindosen.idDosen == 3){
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'selasa' and dosen_id = 3");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen == 1){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'selasa' and dosen_id = 1");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==2){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'selasa' and dosen_id = 2");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==4){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'selasa' and dosen_id = 4");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==5){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'selasa' and dosen_id = 5");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }
+        
+            
     }
 
     /**

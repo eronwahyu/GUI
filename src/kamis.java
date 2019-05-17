@@ -1,3 +1,11 @@
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,9 +21,91 @@ public class kamis extends javax.swing.JFrame {
     /**
      * Creates new form kamis
      */
+    Connection con = null;
+    public DefaultTableModel model;
+    
     public kamis() {
         initComponents();
+        con = config.getConnection();
+    
+    
+        
+        
+        String[] header1 = {"Mulai","Matkul","Selesai"};
+        model = new DefaultTableModel(header1,0);
+        jTable1.setModel(model);
+        
+        tampil_jadwal();
+        
     }
+    
+    public void tampil_jadwal(){
+        
+       if(logindosen.idDosen == 3){
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 3");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen == 1){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 1");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==2){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 2");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==4){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 4");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==5){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 5");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }
+        
+            
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,27 +117,49 @@ public class kamis extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setText("KAMIS");
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(167, 167, 167)
-                .addComponent(jLabel1)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(167, 167, 167)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
-                .addContainerGap(240, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -90,5 +202,7 @@ public class kamis extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

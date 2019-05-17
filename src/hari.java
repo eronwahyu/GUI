@@ -9,5 +9,5 @@
  * @author User
  */
 public class hari {
-    
+    int dosen_id;
 }

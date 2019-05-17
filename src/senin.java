@@ -3,6 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -13,10 +17,89 @@ public class senin extends javax.swing.JFrame {
     /**
      * Creates new form senin
      */
+    Connection con = null;
+    public DefaultTableModel model;
+
     public senin() {
         initComponents();
+        con = config.getConnection();
+        
+        String[] header1 = {"Mulai","Matkul","Selesai"};
+        model = new DefaultTableModel(header1,0);
+        jTable1.setModel(model);
+        
+        tampil_jadwal();
+        
     }
-
+    
+    public void tampil_jadwal(){
+        
+       if(logindosen.idDosen == 3 ||informatika.dosenId == 3){
+        try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 3");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen == 1 || informatika.dosenId == 1){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 1");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==2 || informatika.dosenId == 2){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 2");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==4 || || informatika.dosenId == 4){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 4");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }else if (logindosen.idDosen==5 || || informatika.dosenId == 5){
+           try{
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'senin' and dosen_id = 5");
+            while(rs.next()){
+                String[] baris = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                model.addRow(baris);
+            }
+                    
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }   
+       }
+        
+            
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

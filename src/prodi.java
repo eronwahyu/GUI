@@ -1,3 +1,12 @@
+
+import config.getConnection;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,19 +17,28 @@
  *
  * @author User
  */
+
 public class prodi extends javax.swing.JFrame {
     String username;
+    Connection con = null;
+    
     /**
      * Creates new form prodi
      */
     public prodi() {
         initComponents();
+        
+        
+        
     }
     public prodi(String username){
         this.username=username;
         initComponents();
+        con = config.getConnection();
+        
         
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -33,6 +51,7 @@ public class prodi extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -60,7 +79,16 @@ public class prodi extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(350, 170, 43, 25);
+        jButton1.setBounds(300, 170, 43, 25);
+
+        jButton3.setText("semua jadwal");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3);
+        jButton3.setBounds(360, 170, 97, 23);
 
         jLabel3.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 102, 255));
@@ -97,10 +125,18 @@ public class prodi extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         informatika sa = new informatika ();
-        setVisible(true);
+        sa.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+ 
+
+        
     /**
      * @param args the command line arguments
      */
@@ -139,6 +175,7 @@ public class prodi extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class logindosen extends javax.swing.JFrame {
-
+Connection con = null;
     /**
      * Creates new form logindosen
      */
@@ -18,6 +18,7 @@ public class logindosen extends javax.swing.JFrame {
     
     public logindosen() {
         initComponents();
+        con = config.getConnection();
     }
     
     /**
@@ -165,8 +166,10 @@ public class logindosen extends javax.swing.JFrame {
                     getusername.getText()+"';");
             if(rs.next()){
                 if(getpassword.getText().equals(rs.getString("password"))){
+                    idDosen = rs.getInt("dosen_id");
                    new Jadwal(rs.getInt("dosen_id")).setVisible(true);
-                   idDosen = rs.getInt("dosen_id");
+                   
+                   
                    this.dispose();
                     
                     

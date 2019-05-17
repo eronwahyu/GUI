@@ -53,7 +53,7 @@ public class kamis extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen == 1){
+       }else if (logindosen.idDosen == 1 || informatika.dosenId == 1){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 1");
@@ -65,7 +65,7 @@ public class kamis extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen==2){
+       }else if (logindosen.idDosen==2 || tpb.dosenid == 2){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 2");
@@ -77,7 +77,7 @@ public class kamis extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen==4){
+       }else if (logindosen.idDosen==4|| informatika.dosenId == 4){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 4");
@@ -89,7 +89,7 @@ public class kamis extends javax.swing.JFrame {
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }   
-       }else if (logindosen.idDosen==5){
+       }else if (logindosen.idDosen==5 || tpb.dosenid == 5){
            try{
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("select waktu_mulai,nama_matkul,waktu_selesai from jadwal where hari = 'kamis' and dosen_id = 5");
@@ -119,12 +119,16 @@ public class kamis extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         jLabel1.setText("KAMIS");
 
+        jTable1.setBackground(new java.awt.Color(153, 255, 255));
+        jTable1.setBorder(new javax.swing.border.MatteBorder(null));
+        jTable1.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -138,6 +142,13 @@ public class kamis extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,7 +160,10 @@ public class kamis extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -158,12 +172,21 @@ public class kamis extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(jButton1)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Jadwal se = new Jadwal ();
+        se.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +224,7 @@ public class kamis extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
